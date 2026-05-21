@@ -1,0 +1,179 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-beige: var(--beige);
+  --color-sage: var(--sage);
+  --color-ink: var(--ink);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", serif;
+  --font-arabic: "Amiri", "Scheherazade New", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Aqiqah palette — cream, gold, beige, soft green */
+  --background: oklch(0.98 0.012 85);          /* warm cream */
+  --foreground: oklch(0.28 0.03 60);           /* warm ink */
+
+  --card: oklch(0.985 0.01 85);
+  --card-foreground: oklch(0.28 0.03 60);
+  --popover: oklch(0.985 0.01 85);
+  --popover-foreground: oklch(0.28 0.03 60);
+
+  --primary: oklch(0.72 0.13 75);              /* gold */
+  --primary-foreground: oklch(0.99 0.01 85);
+  --secondary: oklch(0.94 0.02 80);
+  --secondary-foreground: oklch(0.3 0.03 60);
+  --muted: oklch(0.94 0.018 80);
+  --muted-foreground: oklch(0.48 0.03 60);
+  --accent: oklch(0.65 0.08 150);              /* soft green accent */
+  --accent-foreground: oklch(0.99 0.01 85);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 85);
+  --border: oklch(0.88 0.025 80);
+  --input: oklch(0.9 0.02 80);
+  --ring: oklch(0.72 0.13 75);
+
+  --gold: oklch(0.72 0.13 75);
+  --gold-soft: oklch(0.85 0.09 80);
+  --cream: oklch(0.97 0.018 85);
+  --beige: oklch(0.92 0.025 75);
+  --sage: oklch(0.65 0.08 150);
+  --ink: oklch(0.25 0.03 60);
+
+  --shadow-luxe: 0 30px 80px -20px oklch(0.4 0.08 60 / 0.35);
+  --shadow-soft: 0 10px 40px -10px oklch(0.4 0.08 60 / 0.18);
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.12 80), oklch(0.65 0.14 65));
+  --gradient-cream: linear-gradient(180deg, oklch(0.98 0.012 85), oklch(0.94 0.025 78));
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--gradient-cream);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  .font-arabic { font-family: var(--font-arabic); }
+  .font-display { font-family: var(--font-display); }
+
+  .text-gold { color: var(--gold); }
+  .bg-gold { background: var(--gold); }
+  .bg-gradient-gold { background: var(--gradient-gold); }
+  .bg-cream { background: var(--cream); }
+  .shadow-luxe { box-shadow: var(--shadow-luxe); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  @keyframes float-particle {
+    0%,100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+    50% { transform: translateY(-30px) translateX(10px); opacity: 1; }
+  }
+  .animate-float { animation: float-particle 6s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes envelope-cta-pulse {
+    0%, 100% { box-shadow: 0 8px 28px -6px oklch(0.45 0.1 55 / 0.35), 0 0 0 0 oklch(0.72 0.13 75 / 0.35); }
+    50% { box-shadow: 0 12px 32px -4px oklch(0.45 0.1 55 / 0.4), 0 0 0 6px oklch(0.72 0.13 75 / 0.12); }
+  }
+
+  .envelope-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: oklch(0.99 0.01 85);
+    background: var(--gradient-gold);
+    border: 1px solid oklch(0.78 0.12 78 / 0.5);
+    box-shadow: 0 8px 28px -6px oklch(0.45 0.1 55 / 0.35);
+    animation: envelope-cta-pulse 2.5s ease-in-out infinite;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    cursor: pointer;
+  }
+  .envelope-cta:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+  }
+  .envelope-cta:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Envelope front name — gold, readable on beige flap pocket */
+  .envelope-name {
+    color: oklch(0.46 0.11 58);
+    text-shadow:
+      0 1px 0 oklch(0.99 0.01 85 / 0.9),
+      0 2px 10px oklch(0.42 0.1 55 / 0.25);
+  }
+
+  /* Gold shimmer — deeper tones + soft outline so name stays readable on cream */
+  .text-shimmer {
+    color: oklch(0.5 0.12 62);
+    background: linear-gradient(
+      110deg,
+      oklch(0.44 0.11 56) 0%,
+      oklch(0.56 0.13 66) 22%,
+      oklch(0.72 0.14 76) 50%,
+      oklch(0.56 0.13 66) 78%,
+      oklch(0.44 0.11 56) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s ease-in-out infinite;
+    filter: drop-shadow(0 1px 0 oklch(0.99 0.01 85 / 0.92))
+      drop-shadow(0 2px 8px oklch(0.42 0.1 55 / 0.4))
+      drop-shadow(0 6px 28px oklch(0.52 0.12 62 / 0.28));
+  }
+}
