@@ -4,9 +4,9 @@ import { Countdown } from "./Countdown";
 import { Particles } from "./Particles";
 import heroBg from "@/assets/hero-bg.jpg";
 import pattern from "@/assets/pattern.jpg";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
+import g1 from "@/assets/gallery-1.jpeg";
+import g2 from "@/assets/gallery-2.jpeg";
+import g3 from "@/assets/gallery-3.jpeg";
 import g4 from "@/assets/gallery-4.jpg";
 
 const EVENT = {
